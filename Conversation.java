@@ -1,6 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
+//runs the conversation
 class Conversation {
   public static void main(String[] arguments) {
     int rounds = 0;
@@ -28,6 +29,7 @@ class Conversation {
     }
   }
   
+  //figures out how to respond to input sentence
   public static String respond(String sentence) {
     String[] mirrorWords = new String[] {"I", "I'm", "me", "am", "you", "your", "yours", "you're", "yourself", "my", "mine", "myself"};
     String[] replaceWords = new String[] {"you", "you're", "you", "are", "I", "my", "mine", "myself", "I'm", "your", "yours", "yourself"};
