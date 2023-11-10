@@ -3,13 +3,17 @@ import java.util.Random;
 
 //runs the conversation
 class Conversation {
+  static String[] mirrorWords = new String[] {"I", "I'm", "me", "am", "you", "your", "yours", "you're", "yourself", "my", "mine", "myself"};
+  static String[] replaceWords = new String[] {"you", "you're", "you", "are", "I", "my", "mine", "myself", "I'm", "your", "yours", "yourself"};
+  static String[] responses = new String[] {"I see.", "Mm-hmm.", "Very interesting.", "Wow."};
+
   public static void main(String[] arguments) {
     int rounds = 0;
     String sentence = "";
     String response = "";
     String[] transcript;
     Scanner input = new Scanner(System.in);
-
+    
     System.out.println("How many rounds of conversation would you like?");
     rounds = input.nextInt();
     transcript = new String[2*rounds+1];
@@ -21,7 +25,7 @@ class Conversation {
       response = respond(sentence);
       transcript[2*i+1] = sentence;
       transcript[2*i+2] = response; 
-      System.out.println(respond(sentence));
+      System.out.println(response);
     }
     System.out.println("\nTranscript:");
     for (int i = 0; i<2*rounds+1; i++){
@@ -29,11 +33,12 @@ class Conversation {
     }
   }
   
-  //figures out how to respond to input sentence
+  /** 
+   * Gives response to user input
+   * @param sentence user inputted sentence
+   * @return a response sentence
+   * */
   public static String respond(String sentence) {
-    String[] mirrorWords = new String[] {"I", "I'm", "me", "am", "you", "your", "yours", "you're", "yourself", "my", "mine", "myself"};
-    String[] replaceWords = new String[] {"you", "you're", "you", "are", "I", "my", "mine", "myself", "I'm", "your", "yours", "yourself"};
-    String[] responses = new String[] {"I see.", "Mm-hmm.", "Very interesting.", "Wow."};
     String[] splitSent = sentence.split(" ");
     String responseSentence = "";
     Random random = new Random();
